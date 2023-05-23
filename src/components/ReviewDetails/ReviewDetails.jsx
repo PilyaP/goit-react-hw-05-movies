@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/api';
 
-
 const ReviewsDetails = () => {
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
@@ -24,9 +23,9 @@ const ReviewsDetails = () => {
     };
 
     fetchReviews();
-  }, [id, setReviews, setLoading]);
+  }, [id]);
 
-  const rews = reviews.map(({ id, author, content }) => (
+  const reviewItems = reviews.map(({ id, author, content }) => (
     <li key={id}>
       <h3>{author}</h3>
       <p>{content}</p>
@@ -36,9 +35,7 @@ const ReviewsDetails = () => {
   return (
     <>
       {loading && <Loader />}
-      <ul>
-        {rews.length === 0 ? "We don't have any reviews for this movie" : rews}
-      </ul>
+      <ul>{reviews.length === 0 ? 'No reviews available' : reviewItems}</ul>
     </>
   );
 };

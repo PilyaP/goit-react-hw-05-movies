@@ -20,7 +20,7 @@ const SingleMovie = lazy(() => import('../pages/SingleMovie'));
 
 export const App = () => {
   return (
-    <div>
+    <>
       <Nav />
       <Suspense fallback={<Loader />}>
         <Routes>
@@ -33,6 +33,6 @@ export const App = () => {
           </Route>
         </Routes>
       </Suspense>
-    </div>
+    </>
   );
 };

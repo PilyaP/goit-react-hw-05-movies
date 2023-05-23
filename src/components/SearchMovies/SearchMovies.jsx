@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-
-
-
 import { searchMovies } from 'services/api';
 import Loader from 'components/Loader/Loader';
+import PopularMovie from 'components/PopularMovies/PopularMovie/PopularMovie';
 
 const SearchMovies = () => {
   const [loading, setLoading] = useState(false);

@@ -1,9 +1,9 @@
-import PopularMovie from 'components/PopularMovie/PopularMovie';
+import PopularMovies from 'components/PopularMovies/PopularMovies';
 
 const Home = () => {
   return (
     <>
-      <PopularMovie />
+      <PopularMovies />
     </>
   );
 };
