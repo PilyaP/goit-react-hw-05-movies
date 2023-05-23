@@ -1,0 +1,18 @@
+.review-list {
+    padding: 0;
+}
+
+.review-item {
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+.review-author {
+    font-weight: bold;
+    color: #333;
+}
+
+.review-content {
+    margin-top: 5px;
+    color: #666;
+}

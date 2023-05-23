@@ -1,9 +1,10 @@
 import Loader from 'components/Loader/Loader';
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-
 import { NavLink, Outlet } from 'react-router-dom';
 import { getMovieById } from 'services/api';
+import './MovieDetails.css';
+
 
 const MovieDetails = () => {
   const [loading, setLoading] = useState(false);
@@ -11,9 +12,7 @@ const MovieDetails = () => {
   const [genres, setGenres] = useState([]);
 
   const { id } = useParams();
-
   const navigate = useNavigate();
-
   const location = useLocation();
   const from = location.state?.from || '/';
 
@@ -39,41 +38,44 @@ const MovieDetails = () => {
   }, [navigate, from]);
 
   return (
-    <>
-      <button onClick={goBack}>GO BACK</button>
+    <div className="movie-details-container">
+      <button className='btn-movie' onClick={goBack}>GO BACK</button>
       {loading && <Loader />}
-
-      <div className="">
+      <div className="movie-details">
         {movie.poster_path && (
           <img
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            className=""
+            className="movie-poster"
             alt=""
-          ></img>
+          />
         )}
-        <div>
-          <h1>{movie.title}</h1>
-          <p>User Score: {Math.round(movie.vote_average * 10)}%</p>
-          <h2>Overview</h2>
-          <p>{movie.overview}</p>
-          <h3>Genres</h3>
-          <ul>
+        <div className="movie-info">
+          <h1 className="movie-title">{movie.title}</h1>
+          <p className="user-score">
+            User Score: {Math.round(movie.vote_average * 10)}%
+          </p>
+          <h2 className="overview-title">Overview</h2>
+          <p className="overview-text">{movie.overview}</p>
+          <h3 className="genres-title">Genres</h3>
+          <ul className="genres-list">
             {genres.map(({ id, name }) => (
-              <li key={id}>{name}</li>
+              <li key={id} className="genre-item">
+                {name}
+              </li>
             ))}
           </ul>
         </div>
       </div>
-      <div className="">
-        <NavLink className="" to="cast" state={{ from }}>
+      <div className="navigation-links">
+        <NavLink className="nav-link" to="cast" state={{ from }}>
           Cast
         </NavLink>
-        <NavLink className="" to="reviews" state={{ from }}>
+        <NavLink className="nav-link" to="reviews" state={{ from }}>
           Reviews
         </NavLink>
       </div>
       <Outlet />
-    </>
+    </div>
   );
 };
 

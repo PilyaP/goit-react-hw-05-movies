@@ -1,0 +1,21 @@
+.popular-movie-list {
+    list-style: none;
+    padding: 0;
+}
+
+.popular-movie-item {
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.popular-movie-link {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+.popular-movie-link:hover {
+    color: #ff0000;
+}

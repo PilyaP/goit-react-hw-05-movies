@@ -2,9 +2,7 @@ import Loader from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'services/api';
-
-
-
+import './CastDetails.css';
 
 export const CastDetails = () => {
   const [loading, setLoading] = useState(false);
@@ -28,11 +26,11 @@ export const CastDetails = () => {
   }, [id]);
 
   const castes = cast.map(({ id, name, character, profile_path }) => (
-    <li key={id} className="">
+    <li key={id} className="cast-item">
       {profile_path && (
         <img
           src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
-          className=""
+          className="cast-image"
           alt=""
         ></img>
       )}
@@ -44,9 +42,11 @@ export const CastDetails = () => {
   return (
     <>
       {loading && <Loader />}
-      <ul>
+      <ul className="cast-list">
         {castes.length === 0 ? "We don't have any cast for this movie" : castes}
       </ul>
     </>
   );
 };
+
+export default CastDetails;

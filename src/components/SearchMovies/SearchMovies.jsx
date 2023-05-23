@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import styled from 'styled-components';
-
 import { searchMovies } from 'services/api';
 import Loader from 'components/Loader/Loader';
 import PopularMovie from 'components/PopularMovieItem/PopularMovieItem';
+import './SearchMovies.css'; 
 
 const SearchMovies = () => {
   const [loading, setLoading] = useState(false);
@@ -38,19 +37,22 @@ const SearchMovies = () => {
   };
 
   return (
-    <SearchMoviesContainer>
-      <SearchForm onSubmit={handleSubmit}>
-        <SearchInput
+    <div className="search-movies">
+      <form onSubmit={handleSubmit}>
+        <input
           type="text"
           name="searchname"
           autoComplete="off"
           autoFocus
           placeholder="Search movies"
+          className="search-input"
         />
-        <SearchButton type="submit">Search</SearchButton>
-      </SearchForm>
+        <button type="submit" className="search-button">
+          Search
+        </button>
+      </form>
       {loading ? <Loader /> : <PopularMovie items={movies} />}
-    </SearchMoviesContainer>
+    </div>
   );
 };
 
