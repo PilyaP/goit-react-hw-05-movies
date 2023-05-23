@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 
-const PopularMovie = ({ items }) => {
+const PopularMovieItem = ({ items }) => {
   const location = useLocation();
 
   const element = items.map(({ id, title }) => (
@@ -17,4 +17,4 @@ const PopularMovie = ({ items }) => {
   return <ul>{element}</ul>;
 };
 
-export default PopularMovie;
+export default PopularMovieItem;

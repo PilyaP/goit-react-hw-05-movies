@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { searchMovies } from 'services/api';
 import Loader from 'components/Loader/Loader';
-import PopularMovie from 'components/PopularMovies/PopularMovie/PopularMovie';
+import PopularMovie from 'components/PopularMovieItem/PopularMovieItem';
 
 const SearchMovies = () => {
   const [loading, setLoading] = useState(false);
-  // const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
@@ -38,21 +38,19 @@ const SearchMovies = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <button type="submit" className="button">
-          <span></span>Search
-        </button>
-        <input
+    <SearchMoviesContainer>
+      <SearchForm onSubmit={handleSubmit}>
+        <SearchInput
           type="text"
           name="searchname"
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
+          placeholder="Search movies"
         />
-      </form>
+        <SearchButton type="submit">Search</SearchButton>
+      </SearchForm>
       {loading ? <Loader /> : <PopularMovie items={movies} />}
-    </>
+    </SearchMoviesContainer>
   );
 };
 

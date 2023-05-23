@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { getMostPopular } from 'services/api';
 import Loader from 'components/Loader/Loader';
-import PopularMovie from './PopularMovie/PopularMovie';
+import PopularMovieItem from '../PopularMovieItem/PopularMovieItem';
 
 const PopularMovies = () => {
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ const PopularMovies = () => {
     fetchMovie();
   }, []);
 
-  return <>{loading ? <Loader /> : <PopularMovie items={movies} />}</>;
+  return <>{loading ? <Loader /> : <PopularMovieItem items={movies} />}</>;
 };
 
 export default PopularMovies;
